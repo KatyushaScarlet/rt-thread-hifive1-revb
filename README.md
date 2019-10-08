@@ -44,18 +44,18 @@ Freedom Studio 是 SiFive 公司推出的一个集成开发环境，用来编写
 set RTT_EXEC_PATH=F:\FreedomStudio\SiFive\riscv64-unknown-elf-gcc-20171231-x86_64-w64-mingw32\bin
 ```
 
-### 添加环境变量
+### 添加环境变量（需修改）
 
-将 **工具链**和**编译工具**的路径 添加到环境变量里，输入命令如下
+将 **工具链**的路径添加到环境变量里，输入命令如下
 
 ```
-set path=%path%;工具链的路径;编译工具的路径;
+set path=%path%;工具链的路径
 ```
 
 例如：
 
 ```
-set path=%path%;F:\FreedomStudio\SiFive\riscv64-unknown-elf-gcc-20171231-x86_64-w64-mingw32\bin;F:\FreedomStudio\build-tools\bin
+set path=%path%;F:\FreedomStudio\SiFive\riscv64-unknown-elf-gcc-20171231-x86_64-w64-mingw32\bin
 ```
 
 ![1538296570129](figures/env.png)
@@ -99,7 +99,7 @@ set path=%path%;F:\FreedomStudio\SiFive\riscv64-unknown-elf-gcc-20171231-x86_64-
 
 
 
-## 烧写及执行
+## 烧写及执行（需修改）
 
 ### 安装驱动
 
@@ -107,13 +107,13 @@ set path=%path%;F:\FreedomStudio\SiFive\riscv64-unknown-elf-gcc-20171231-x86_64-
 
 2. 然后双击安装 IDE 目录 `F:\FreedomStudio\SiFive\Drivers` 下的驱动文件
 
-### 添加字符串定义
+### 添加字符串定义（废弃）
 
 点击菜单栏 `Window->preferences`  按下图的步骤将 字符串 `cross_prefix` 定义为 `riscv64-unknown-elf-`
 
 ![1538298633528](figures/string.png)
 
-### 配置 Debug 参数
+### 配置 Debug 参数（需修改）
 
 选中生成的 `rtthread.elf` 文件,右键配置 Debug 参数，如下图所示
 

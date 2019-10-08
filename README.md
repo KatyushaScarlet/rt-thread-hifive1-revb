@@ -2,7 +2,7 @@
 
 ## 简介
 
-[HiFive1 Rev B](https://www.sifive.com/boards/hifive1-rev-b) HiFive1 Rev B是一款基于FE310 SoC的低成本开发板的升级版本。
+[HiFive1 Rev B](https://www.sifive.com/boards/hifive1-rev-b) 是一款基于FE310 SoC的低成本开发板的升级版本。
 
 ![1538284005769](figures/board.png)
 

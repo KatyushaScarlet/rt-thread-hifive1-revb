@@ -1,14 +1,12 @@
 # HiFive1 Rev B #
 
-## 简介
+## 1 简介
 
 [HiFive1 Rev B](https://www.sifive.com/boards/hifive1-rev-b) 是一款基于FE310 SoC的低成本开发板的升级版本。
 
 ![1538284005769](figures/board.png)
 
-
-
-### 板载资源：
+### 1.1 板载资源：
 
 | 硬件 | 描述 |
 | -- | -- |
@@ -20,9 +18,9 @@
 |SRAM| 16KB |
 |Flash| 32 Mbit Off-Chip (ISSI SPI Flash) |
 
-## 编译说明
+## 2 编译说明
 
-### 下载所需工具及源码
+### 2.2 下载所需工具及源码
 
 Freedom Studio 是 SiFive 公司推出的一个集成开发环境，用来编写和调试基于 SiFive 处理器的软件。内嵌了编译好的 RISC-V GCC 工具链、OpenOCD、以及一些示例和文档。
 
@@ -52,7 +50,7 @@ HiFive1 Rev B bsp文件
 
 ![replace](figures/replace.png)
 
-### 配置工具链
+### 2.3 配置工具链
 
 工具链的默认位置为 `F:\FreedomStudio-2019-08-1-win64\SiFive\riscv64-unknown-elf-gcc-8.3.0-2019.08.0\bin` 目录
 
@@ -72,7 +70,7 @@ set path=%path%; F:\FreedomStudio-2019-08-1-win64\SiFive\riscv64-unknown-elf-gcc
 
 ![env](figures/env.png)
 
-### 从 env 工具打开 IDE
+### 2.4 从 env 工具打开 IDE
 
 利用 cd 命令，切换到 FreedomStudio 解压后的目录中，再执行 `FreedomStudio.exe` 文件运行IDE
 
@@ -93,7 +91,7 @@ FreedomStudio.exe
 
 ![open](figures/open.png)
 
-### 导入工程
+### 2.5 导入工程
 
 点击菜单栏左上角 `File->Import...` 
 
@@ -107,7 +105,7 @@ FreedomStudio.exe
 
 ![import1](figures/import3.png)
 
-### 编译
+### 2.6 编译
 
 选中要编译的工程，点击左上角的锤子图标开始编译
 
@@ -115,9 +113,9 @@ FreedomStudio.exe
 
 ![build](figures/build.png)
 
-## 烧写及执行
+## 3 烧写及执行
 
-### 配置 Debug 参数
+### 3.1 配置 Debug 参数
 
 使用 Micro USB 数据线连接电脑与开发板
 
@@ -138,7 +136,7 @@ FreedomStudio.exe
 ![debug4](figures/debug4.png)
 ![debug5](figures/debug5.png)
 
-### 运行结果
+### 3.2 运行结果
 
 下载程序之后，连接串口（115200-N-8-1），可以看到 RT-Thread 的输出信息：
 
@@ -174,7 +172,7 @@ free             - Show the memory usage in the system.
 msh >
 ```
 
-## 4. 驱动支持情况及计划
+## 4 驱动支持情况及计划
 
 | 驱动 | 支持情况  |  备注  |
 | ------ | ----  | :------:  |
@@ -189,13 +187,13 @@ msh >
 | GPIO21 | LED_BLUE |
 | GPIO22 | LED_RED |
 
-## 5. 联系人信息
+## 5 联系人信息
 
 维护人：
 - [tanek](https://github.com/TanekLiang)
 - [Katyusha](https://github.com/KatyushaScarlet)
 
-## 6. 参考
+## 6 参考
 
 * [HiFive1 Rev B](https://www.sifive.com/boards/hifive1-rev-b/)
 * [Boards & Software - SiFive](https://www.sifive.com/products/tools/)

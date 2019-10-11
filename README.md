@@ -28,10 +28,13 @@ Freedom Studio 是 SiFive 公司推出的一个集成开发环境，用来编写
 
 Freedom Studio
 下载地址：[官网下载](https://www.sifive.com/boards/)
+
 RT-Thread Env工具
 下载地址：[官网下载](https://www.rt-thread.org/page/download.html)
+
 RT-Thread 源码
 下载地址：[Github下载](https://github.com/RT-Thread/rt-thread)
+
 HiFive1 Rev B bsp文件
 下载地址：[Github下载](https://github.com/KatyushaScarlet/hifive1-revb)
 

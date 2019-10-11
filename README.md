@@ -35,7 +35,7 @@ RT-Thread 源码
 HiFive1 Rev B bsp文件
 下载地址：[Github下载](https://github.com/KatyushaScarlet/hifive1-revb)
 
-![dowmload](figures/dowmload.png)
+![download](figures/download.png)
 
 将 Freedom Studio 与 Env 工具解压到非中文字符且不含空格的目录下
 

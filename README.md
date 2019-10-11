@@ -22,138 +22,145 @@
 
 ## 编译说明
 
-### 下载 Freedom Studio
+### 下载所需工具及源码
 
 Freedom Studio 是 SiFive 公司推出的一个集成开发环境，用来编写和调试基于 SiFive 处理器的软件。内嵌了编译好的 RISC-V GCC 工具链、OpenOCD、以及一些示例和文档。
 
-下载地址：[官网下载](https://www.sifive.com/products/tools/)
+Freedom Studio
+下载地址：[官网下载](https://www.sifive.com/boards/)
+RT-Thread Env工具
+下载地址：[官网下载](https://www.rt-thread.org/page/download.html)
+RT-Thread 源码
+下载地址：[Github下载](https://github.com/RT-Thread/rt-thread)
+HiFive1 Rev B bsp文件
+下载地址：[Github下载](https://github.com/KatyushaScarlet/hifive1-revb)
 
-![1538295358180](figures/dowmload.png)
+![dowmload](figures/dowmload.png)
 
-下载成功之后，解压到和 rt-thread 源码同一目录下
+将 Freedom Studio 与 Env 工具解压到非中文字符且不含空格的目录下
 
-![1538295750998](figures/untar.png)
+![unzip](figures/unzip.png)
+
+打开 `FreedomStudio-2019-08-1-win64\SiFive\Drivers` 文件夹，安装驱动文件
+
+![drivers](figures/drivers.png)
+
+如图下所示，将 HiFive1 Rev B bsp 文件放置在 RT-Thread 源码中的 bsp 文件夹内
+
+![replace](figures/replace.png)
 
 ### 配置工具链
 
-工具链就在解压开的 IDE  `F:\FreedomStudio\SiFive\riscv64-unknown-elf-gcc-20171231-x86_64-w64-mingw32\bin` 目录下。
+工具链默认位置为 `F:\FreedomStudio-2019-08-1-win64\SiFive\riscv64-unknown-elf-gcc-8.3.0-2019.08.0\bin` 目录下
 
-在源码  `rt-thread/bsp/hifive1/` 目录下，运行 env 工具，输入下面的命令设置 gcc 工具链路径
-
-```
-set RTT_EXEC_PATH=F:\FreedomStudio\SiFive\riscv64-unknown-elf-gcc-20171231-x86_64-w64-mingw32\bin
-```
-
-### 添加环境变量（需修改）
-
-将 **工具链**的路径添加到环境变量里，输入命令如下
+运行 env 工具，根据实际情况，输入以下命令设置环境变量：
 
 ```
+set RTT_EXEC_PATH=工具链的路径
 set path=%path%;工具链的路径
 ```
 
 例如：
 
 ```
-set path=%path%;F:\FreedomStudio\SiFive\riscv64-unknown-elf-gcc-20171231-x86_64-w64-mingw32\bin
+set RTT_EXEC_PATH=F:\FreedomStudio-2019-08-1-win64\SiFive\riscv64-unknown-elf-gcc-8.3.0-2019.08.0\bin
+set path=%path%; F:\FreedomStudio-2019-08-1-win64\SiFive\riscv64-unknown-elf-gcc-8.3.0-2019.08.0\bin
 ```
 
-![1538296570129](figures/env.png)
+![env](figures/env.png)
 
 ### 从 env 工具打开 IDE
 
-利用 cd 命令，切换到解压开的 IDE 目录
+利用 cd 命令，切换到 FreedomStudio 解压后的目录中，再执行 `FreedomStudio.exe` 文件运行IDE
 
-![1538296766437](figures/cd.png)
+![open_ide](figures/open_ide.png)
 
-输入 Freedom Studio 按 Tab 键 自动补全，然后按回车运行 IDE。
+在弹出的窗口输入 workspace 创建工作空间，然后点击 Launch 启动 IDE
 
-![1538296878924](figures/open_ide.png)
+![workspace](figures/workspace.png)
 
-在弹出的窗口输入 workspace 创建工作空间，然后点击启动打开 IDE。
+点击 `I’m done here, take me to the Workbench` 进入 IDE 主窗口
 
-![1538296978929](figures/ide.png)
+![open](figures/open.png)
 
 ### 导入工程
 
-在菜单栏点击 `File->Import` 
+点击菜单栏左上角 `File->Import...` 
 
-![1538297215062](figures/import.png)
+![import1](figures/import1.png)
 
-按照下面的图片导入工程
+展开 `C/C++` ，选择 `Existing Code as Makefile Project` ，点击 Next 继续
 
-![1538297303505](figures/import2.png)
+![import1](figures/import2.png)
 
-![1538297553367](figures/import3.png)
+在编辑框中填入 bsp 文件所在目录，选择 `Cross GCC` ，点击 Finish 导入
 
-
+![import1](figures/import3.png)
 
 ### 编译
 
-![1538297679868](figures/build.png)
+选中要编译的工程，点击左上角的锤子图标开始编译
 
-然后等待编译完成
+当窗口输出 `Build Finished` ，左侧文件列表出现 `rtthread.elf` 文件时，即为编译成功
 
-![1538297922206](figures/builded.png)
+![build](figures/build.png)
 
+## 烧写及执行
 
+### 配置 Debug 参数
 
+使用 Micro USB 数据线连接电脑与开发板
 
-## 烧写及执行（需修改）
+右键列表中的 `rtthread.elf` 文件，选择 `Debug As->1 As JLink launch`
 
-### 安装驱动
+![debug1](figures/debug1.png)
 
-1. 使用 Micro USB 线连接电脑和开发板。
+点击 Debugger 选项卡，选择设备名称 `FE310` 
 
-2. 然后双击安装 IDE 目录 `F:\FreedomStudio\SiFive\Drivers` 下的驱动文件
+![debug2](figures/debug2.png)
 
-### 添加字符串定义（废弃）
+点击 Startup 选项卡，根据图中选项进行设置
 
-点击菜单栏 `Window->preferences`  按下图的步骤将 字符串 `cross_prefix` 定义为 `riscv64-unknown-elf-`
+![debug3](figures/debug3.png)
 
-![1538298633528](figures/string.png)
+点击 Config 选项卡，在 'Target Architecture' 处选择 'riscv:cv32' ，点击 Debug 开始调试
 
-### 配置 Debug 参数（需修改）
-
-选中生成的 `rtthread.elf` 文件,右键配置 Debug 参数，如下图所示
-
-![1538298914673](figures/debug.png)
-
-按下图新建一个 Debug 选项
-
-![1538299063801](figures/debug1.png)
-
-打开 `Debugger` 选项卡 添加如下参数
-
-```
--f openocd.cfg
-
-set mem inaccessible-by-default off
-set arch riscv:rv32
-set remotetimeout 250
-```
-
-如下图所示：
-
-![1538299273874](figures/debug2.png)
-
-打开 `startup` 选项卡，去掉**主机模式**和**复位命令**
-
-![1538299521246](figures/debug3.png)
-
-然后待程序停止在 main 函数处，然后点击继续运行程序就运行起来了。
-
-![1538299736730](figures/run.png)
+![debug4](figures/debug4.png)
+![debug5](figures/debug5.png)
 
 ### 运行结果
 
-下载程序之后，连接串口(115200-N-8-1)，可以看到RT-Thread的输出信息：
+下载程序之后，连接串口(115200-N-8-1)，可以看到 RT-Thread 的输出信息：
 
 ```
  \ | /
 - RT -     Thread Operating System
- / | \     3.0.4 build May 30 2018
- 2006 - 2018 Copyright by rt-thread team
+ / | \     4.0.2 build Oct 11 2019
+ 2006 - 2019 Copyright by rt-thread team
+ msh >
+```
+
+按下Tab键可以查看 RT-Thread 内置的命令
+
+```
+msh >
+RT-Thread shell commands:
+memcheck         - check memory data
+memtrace         - dump memory trace information
+version          - show RT-Thread version information
+list_thread      - list thread
+list_sem         - list semaphore in system
+list_event       - list event in system
+list_mutex       - list mutex in system
+list_mailbox     - list mail box in system
+list_msgqueue    - list message queue in system
+list_mempool     - list memory pool in system
+list_timer       - list timer in system
+list_device      - list device in system
+help             - RT-Thread shell help.
+ps               - List threads in the system.
+free             - Show the memory usage in the system.
+
 msh >
 ```
 
@@ -176,10 +183,11 @@ msh >
 
 维护人：
 - [tanek](https://github.com/TanekLiang)
+- [Katyusha](https://github.com/KatyushaScarlet)
 
 ## 6. 参考
 
-* [HIFIVE1 Info](https://www.sifive.com/products/hifive1/)
-* [HIFIVE1 Software Development Tools](https://www.sifive.com/products/tools/)
-* [hifive1-getting-started-guide](https://www.sifive.com/documentation/boards/hifive1/hifive1-getting-started-guide/)
-* [hifive1-schematics](https://www.sifive.com/documentation/boards/hifive1/hifive1-schematics/)
+* [HiFive1 Rev B](https://www.sifive.com/boards/hifive1-rev-b/)
+* [Boards & Software - SiFive](https://www.sifive.com/products/tools/)
+* [HiFive1 Rev B Getting Started Guide](https://sifive.cdn.prismic.io/sifive%2F4f5a7851-1b52-463b-a293-f352036bc809_hifive1b-getting-started-guide_v1.1.pdf)
+* [HiFive1 Rev B Schematics](https://sifive.cdn.prismic.io/sifive%2Fa4546ced-0922-4d87-9334-e97c1a9fd9a5_hifive1.b01.schematics.pdf)

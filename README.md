@@ -54,7 +54,7 @@ HiFive1 Rev B bsp文件
 
 ### 配置工具链
 
-工具链默认位置为 `F:\FreedomStudio-2019-08-1-win64\SiFive\riscv64-unknown-elf-gcc-8.3.0-2019.08.0\bin` 目录下
+工具链的默认位置为 `F:\FreedomStudio-2019-08-1-win64\SiFive\riscv64-unknown-elf-gcc-8.3.0-2019.08.0\bin` 目录
 
 运行 env 工具，根据实际情况，输入以下命令设置环境变量：
 
@@ -75,6 +75,13 @@ set path=%path%; F:\FreedomStudio-2019-08-1-win64\SiFive\riscv64-unknown-elf-gcc
 ### 从 env 工具打开 IDE
 
 利用 cd 命令，切换到 FreedomStudio 解压后的目录中，再执行 `FreedomStudio.exe` 文件运行IDE
+
+例如：
+
+```
+cd F:\FreedomStudio-2019-08-1-win64
+FreedomStudio.exe
+```
 
 ![open_ide](figures/open_ide.png)
 
@@ -133,7 +140,7 @@ set path=%path%; F:\FreedomStudio-2019-08-1-win64\SiFive\riscv64-unknown-elf-gcc
 
 ### 运行结果
 
-下载程序之后，连接串口(115200-N-8-1)，可以看到 RT-Thread 的输出信息：
+下载程序之后，连接串口（115200-N-8-1），可以看到 RT-Thread 的输出信息：
 
 ```
  \ | /
@@ -143,7 +150,7 @@ set path=%path%; F:\FreedomStudio-2019-08-1-win64\SiFive\riscv64-unknown-elf-gcc
  msh >
 ```
 
-按下Tab键可以查看 RT-Thread 内置的命令
+按下 Tab 键可以查看 RT-Thread 内置的命令
 
 ```
 msh >

@@ -28,5 +28,12 @@
 
 int main(void)
 {
+    rt_uint32_t count = 0 ; 
+    rt_kprintf("Running in main loop\n");
+
+    for(;;count ++){
+        rt_thread_mdelay(1000);
+        rt_kprintf("tick: %d\n", count);
+    }
     return 0;
 }

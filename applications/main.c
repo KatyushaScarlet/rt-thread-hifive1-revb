@@ -26,7 +26,31 @@
 #include <string.h>
 #include <rtthread.h>
 
+#include "led.h"
+
 int main(void)
 {
+    rt_uint32_t count = 0 ; 
+    rt_kprintf("Running in main loop\n");
+    led_init();
+
+    led_set(LED_RED, LED_ON);
+    rt_thread_mdelay(1000);
+
+    led_set(LED_RED, LED_OFF);
+    led_set(LED_GREEN, LED_ON);
+    rt_thread_mdelay(1000);
+
+    led_set(LED_GREEN, LED_OFF);
+    led_set(LED_BLUE, LED_ON);
+    rt_thread_mdelay(1000);
+
+    led_set(LED_BLUE, LED_OFF);
+
+    for(;;count ++){
+        rt_thread_mdelay(1000);
+        rt_kprintf("tick: %d\n", count);
+        led_toggle(LED_BLUE);
+    }
     return 0;
 }
